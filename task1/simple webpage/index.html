@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Webpage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+      text-align: center;
+    }
+
+    /* Header */
+    header {
+      background: green;
+      color: white;
+      padding: 20px;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Sections */
+    section {
+      padding: 20px;
+    }
+
+    /* Gallery */
+    .gallery img {
+      width: 80px;
+      margin: 10px;
+    }
+
+    /* Contact */
+    .contact a {
+      color: green;
+    }
+
+    button {
+      margin-top: 5px;
+      padding: 6px 12px;
+      border: 1px solid #333;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      background: #fdd;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+    /* To-Do List */
+    #todo-container {
+      background: #fff;
+      padding: 20px;
+      width: 300px;
+      margin: 20px auto;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+
+    #taskList {
+      list-style: none;
+      padding: 0;
+    }
+
+    #taskList li {
+      background: #eee;
+      margin: 5px 0;
+      padding: 8px;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 4px;
+    }
+
+    .delete-btn {
+      background: red;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Welcome to My Simple Webpage</h1>
+    <nav>
+      <a href="#about">About</a> |
+      <a href="#gallery">Gallery</a> |
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About This Page</h2>
+    <p>This is a simple webpage created to demonstrate the basics of HTML, CSS, and JavaScript. 
+       You will find headings, paragraphs, images, links, and some interactivity below.</p>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="gallery">
+    <h2>Image Gallery</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML Logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS Logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JS Logo">
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>Visit <a href="https://github.com/" target="_blank">GitHub</a> for more projects!</p>
+    <button onclick="alert('Thanks for visiting!')">Click Here</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © Simple Webpage
+  </footer>
+
+  
+  <!-- JavaScript -->
+  <script>
+    // To-Do List functionality
+    document.getElementById("addBtn").onclick = function() {
+      let task = document.getElementById("taskInput").value.trim();
+      if(task !== "") {
+        let li = document.createElement("li");
+        li.textContent = task;
+
+        let delBtn = document.createElement("button");
+        delBtn.textContent = "Delete";
+        delBtn.className = "delete-btn";
+        delBtn.onclick = function() {
+          li.remove();
+        };
+
+        li.appendChild(delBtn);
+        document.getElementById("taskList").appendChild(li);
+        document.getElementById("taskInput").value = "";
+      }
+    };
+  </script>
+
+</body>
+</html>
